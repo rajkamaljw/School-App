@@ -1,0 +1,35 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'BoardOfEducation', 
+    typeNamePlural: 'BoardOfEducations', 
+    title: {
+      type: #STANDARD, 
+      label: 'Board of Education', 
+      value: 'Board'
+    }
+  }
+}
+annotate view ZI_BoardOfEducation with
+{
+  @UI.identification: [ {
+    position: 1 
+  } ]
+  @UI.lineItem: [ {
+    position: 1 
+  }, 
+  {
+    type: #FOR_ACTION, 
+    dataAction: 'Copy', 
+    label: 'Copy Selected Entry', 
+    invocationGrouping: #CHANGE_SET
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_BoardOfEducation', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Board of Education', 
+    position: 1 
+  } ]
+  Board;
+}

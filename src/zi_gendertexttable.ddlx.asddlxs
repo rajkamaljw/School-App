@@ -1,0 +1,45 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'GenderTextTable', 
+    typeNamePlural: 'GenderTextTables', 
+    title: {
+      type: #STANDARD, 
+      label: 'Gender Text Table', 
+      value: 'Gender'
+    }
+  }
+}
+annotate view ZI_GenderTextTable with
+{
+  @UI.identification: [ {
+    position: 1 
+  } ]
+  @UI.lineItem: [ {
+    position: 1 
+  }, 
+  {
+    type: #FOR_ACTION, 
+    dataAction: 'Copy', 
+    label: 'Copy Selected Entry', 
+    invocationGrouping: #CHANGE_SET
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_GenderTextTable', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Gender Text Table', 
+    position: 1 
+  } ]
+  Gender;
+  
+  @UI.identification: [ {
+    position: 2 , 
+    label: 'Text_000'
+  } ]
+  @UI.lineItem: [ {
+    position: 2 , 
+    label: 'Text_000'
+  } ]
+  Text_000;
+}

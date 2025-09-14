@@ -1,0 +1,5 @@
+@EndUserText.label: 'School App'
+define service Z_schoolApp {
+  expose zc_school;
+  expose ZC_Teacher;
+}

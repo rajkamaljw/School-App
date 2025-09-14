@@ -1,0 +1,5 @@
+@ObjectModel.leadingEntity.name: 'ZI_Teachers_S'
+define service ZUI_TEACHERS {
+  expose ZI_TEACHERS_S as TeachersAll;
+  expose ZI_TEACHERS as Teachers;
+}

@@ -1,0 +1,5 @@
+@ObjectModel.leadingEntity.name: 'ZI_City_S'
+define service ZUI_CITY {
+  expose ZI_CITY_S as CityAll;
+  expose ZI_CITY as City;
+}

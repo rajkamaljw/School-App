@@ -1,0 +1,80 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'SchoolTable', 
+    typeNamePlural: 'SchoolTables', 
+    title: {
+      type: #STANDARD, 
+      label: 'School Table', 
+      value: 'Schoolid'
+    }
+  }
+}
+annotate view ZI_SchoolTable with
+{
+  @UI.identification: [ {
+    position: 1 
+  } ]
+  @UI.lineItem: [ {
+    position: 1 
+  }, 
+  {
+    type: #FOR_ACTION, 
+    dataAction: 'Copy', 
+    label: 'Copy Selected Entry', 
+    invocationGrouping: #CHANGE_SET
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_SchoolTable', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'School', 
+    position: 1 
+  } ]
+  Schoolid;
+  
+  @UI.identification: [ {
+    position: 2 
+  } ]
+  @UI.lineItem: [ {
+    position: 2 
+  } ]
+  Schoolname;
+  
+  @UI.identification: [ {
+    position: 3 
+  } ]
+  @UI.lineItem: [ {
+    position: 3 
+  } ]
+  Board;
+  
+  @UI.identification: [ {
+    position: 4 , 
+    label: 'Location'
+  } ]
+  @UI.lineItem: [ {
+    position: 4 , 
+    label: 'Location'
+  } ]
+  Location;
+  
+  @UI.identification: [ {
+    position: 5 
+  } ]
+  @UI.lineItem: [ {
+    position: 5 
+  } ]
+  City;
+  
+  @UI.identification: [ {
+    position: 6,
+    label: 'Principal' 
+  } ]
+  @UI.lineItem: [ {
+    position: 6,
+    label: 'Principal' 
+  } ]
+  Principal;
+  
+}

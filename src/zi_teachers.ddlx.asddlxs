@@ -1,0 +1,99 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Teachers', 
+    typeNamePlural: 'Teacherss', 
+    title: {
+      type: #STANDARD, 
+      label: 'Teachers', 
+      value: 'Schoolid'
+    }
+  }
+}
+annotate view ZI_Teachers with
+{
+  @UI.identification: [ {
+    position: 1 
+  } ]
+  @UI.lineItem: [ {
+    position: 1 
+  }, 
+  {
+    type: #FOR_ACTION, 
+    dataAction: 'Copy', 
+    label: 'Copy Selected Entry', 
+    invocationGrouping: #CHANGE_SET
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_Teachers', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Teachers', 
+    position: 1 
+  } ]
+  Schoolid;
+  
+  @UI.identification: [ {
+    position: 2 
+  } ]
+  @UI.lineItem: [ {
+    position: 2 
+  } ]
+  Teacherid;
+  
+  @UI.identification: [ {
+    position: 3 
+  } ]
+  @UI.lineItem: [ {
+    position: 3 
+  } ]
+  TeacherName;
+  
+  @UI.identification: [ {
+    position: 4 
+  } ]
+  @UI.lineItem: [ {
+    position: 4 
+  } ]
+  Dob;
+  
+  @UI.identification: [ {
+    position: 5 
+  } ]
+  @UI.lineItem: [ {
+    position: 5 
+  } ]
+  Gender;
+  
+  @UI.identification: [ {
+    position: 6 
+  } ]
+  @UI.lineItem: [ {
+    position: 6 
+  } ]
+  Subject;
+  
+  @UI.identification: [ {
+    position: 7 
+  } ]
+  @UI.lineItem: [ {
+    position: 7 
+  } ]
+  Isclassteacher;
+  
+  @UI.identification: [ {
+    position: 8 
+  } ]
+  @UI.lineItem: [ {
+    position: 8 
+  } ]
+  Phone;
+  
+  @UI.identification: [ {
+    position: 9 
+  } ]
+  @UI.lineItem: [ {
+    position: 9 
+  } ]
+  Qualification;
+}

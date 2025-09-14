@@ -1,0 +1,83 @@
+managed with additional save implementation in class ZBP_I_SCHOOLTABLE_S unique;
+strict;
+with draft;
+define behavior for ZI_SchoolTable_S alias SchoolTableAll
+draft table ZSCHOOL_D_S
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+{
+  field ( readonly )
+   SingletonID;
+
+  field ( features : instance )
+   TransportRequestID;
+
+  field ( notrigger )
+   SingletonID,
+   LastChangedAtMax;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit with additional implementation;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare {
+    validation SchoolTable ~ ValidateDataConsistency;
+  }
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _SchoolTable { create ( features : instance ); with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; }
+
+  side effects {
+    action SelectCustomizingTransptReq affects $self;
+  }
+
+}
+
+define behavior for ZI_SchoolTable alias SchoolTable ##UNMAPPED_FIELD
+persistent table ZSCHOOL
+draft table ZSCHOOL_D
+lock dependent by _SchoolTableAll
+authorization dependent by _SchoolTableAll
+{
+  field ( mandatory : create )
+   Schoolid;
+
+  field ( readonly )
+   SingletonID;
+
+  field ( readonly : update )
+   Schoolid;
+
+  field ( notrigger )
+   SingletonID;
+
+
+  update( features : global );
+  delete( features : global );
+
+  factory action ( features : instance ) Copy parameter ZD_CopySchoolTableP [1];
+
+  mapping for ZSCHOOL
+  {
+    Schoolid = SCHOOLID;
+    Schoolname = SCHOOLNAME;
+    Board = BOARD;
+    Location = LOCATION;
+    City = CITY;
+    Principal = PRINCIPAL;
+  }
+
+  association _SchoolTableAll { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+  validation ValidateDataConsistency on save { create; update; }
+
+}

@@ -1,0 +1,5 @@
+@ObjectModel.leadingEntity.name: 'ZI_BoardOfEducation_S'
+define service ZUI_BOARDOFEDUCATION {
+  expose ZI_BOARDOFEDUCATION_S as BoardOfEducationAll;
+  expose ZI_BOARDOFEDUCATION as BoardOfEducation;
+}

@@ -1,0 +1,88 @@
+managed with additional save implementation in class ZBP_I_TEACHERS_S unique;
+strict;
+with draft;
+define behavior for ZI_Teachers_S alias TeachersAll
+draft table ZTEACHER_D_S
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+{
+  field ( readonly )
+   SingletonID;
+
+  field ( features : instance )
+   TransportRequestID;
+
+  field ( notrigger )
+   SingletonID,
+   LastChangedAtMax;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit with additional implementation;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare {
+    validation Teachers ~ ValidateDataConsistency;
+  }
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _Teachers { create ( features : instance ); with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; }
+
+  side effects {
+    action SelectCustomizingTransptReq affects $self;
+  }
+
+}
+
+define behavior for ZI_Teachers alias Teachers ##UNMAPPED_FIELD
+persistent table ZTEACHER
+draft table ZTEACHER_D
+lock dependent by _TeachersAll
+authorization dependent by _TeachersAll
+{
+  field ( mandatory : create )
+   Schoolid,
+   Teacherid;
+
+  field ( readonly )
+   SingletonID;
+
+  field ( readonly : update )
+   Schoolid,
+   Teacherid;
+
+  field ( notrigger )
+   SingletonID;
+
+
+  update( features : global );
+  delete( features : global );
+
+  factory action ( features : instance ) Copy parameter ZD_CopyTeachersP [1];
+
+  mapping for ZTEACHER
+  {
+    Schoolid = SCHOOLID;
+    Teacherid = TEACHERID;
+    TeacherName = TEACHER_NAME;
+    Dob = DOB;
+    Gender = GENDER;
+    Subject = SUBJECT;
+    Isclassteacher = ISCLASSTEACHER;
+    Phone = PHONE;
+    Qualification = QUALIFICATION;
+  }
+
+  association _TeachersAll { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+  validation ValidateDataConsistency on save { create; update; }
+
+}

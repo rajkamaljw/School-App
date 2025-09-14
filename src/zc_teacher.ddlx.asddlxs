@@ -1,0 +1,23 @@
+@Metadata.layer: #CUSTOMER
+annotate view ZC_Teacher
+    with 
+{
+    @UI.lineItem:  [{ position: 10  }]
+    Teacherid;
+    @UI.lineItem:  [{ position: 20  }]
+    TeacherName;
+    @UI.lineItem:  [{ position: 30  }]
+    Dob;
+    @UI.lineItem:  [{ position: 40  }]
+    Gender;
+    @UI.lineItem:  [{ position: 50  }]
+    Subject;
+    @UI.lineItem:  [{ position: 60, label: 'Class Teacher'  }]
+    Isclassteacher;
+    @UI.lineItem:  [{ position: 70  }]
+    Phone;
+    @UI.lineItem:  [{ position: 80  }]
+    Qualification;
+
+    
+}

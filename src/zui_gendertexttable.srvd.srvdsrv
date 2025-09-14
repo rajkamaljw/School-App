@@ -1,0 +1,5 @@
+@ObjectModel.leadingEntity.name: 'ZI_GenderTextTable_S'
+define service ZUI_GENDERTEXTTABLE {
+  expose ZI_GENDERTEXTTABLE_S as GenderTextTableAll;
+  expose ZI_GENDERTEXTTABLE as GenderTextTable;
+}

@@ -1,0 +1,5 @@
+@ObjectModel.leadingEntity.name: 'ZI_SchoolTable_S'
+define service ZUI_SCHOOLTABLE {
+  expose ZI_SCHOOLTABLE_S as SchoolTableAll;
+  expose ZI_SCHOOLTABLE as SchoolTable;
+}
