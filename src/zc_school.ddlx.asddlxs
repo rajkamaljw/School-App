@@ -5,6 +5,7 @@
     typeName: 'School',
     typeNamePlural: 'Schools',
 
+
     title: {
         type: #STANDARD,
 //        label: '',
@@ -18,9 +19,7 @@
     }
 }
 
-
-
-annotate view zc_school with
+annotate view ZC_School with
 {
   @UI.facet: [{
       id: 'School',
@@ -39,27 +38,27 @@ annotate view zc_school with
   ]
 
   @UI.lineItem: [{ position: 10  }]
-  @UI.identification: [{  position: 10 }]
+  @UI.identification: [{  position: 10, label: 'School ID' }]
   Schoolid;
   @UI.lineItem: [{position: 20}]
-  @UI.identification: [{  position: 20 }]
+  @UI.identification: [{  position: 20, label: 'School Name' }]
   @Search.defaultSearchElement: true
   @Search.fuzzinessThreshold: 0.8
   Schoolname;
   @UI.lineItem: [{position: 30}]
-  @UI.identification: [{  position: 30 }]
+  @UI.identification: [{  position: 30, label: 'Board' }]
   @UI.selectionField: [{position: 10 }]
   @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_Board_VH', element: 'Board' } }]
   Board;
   @UI.lineItem: [{position: 40}]
-  @UI.identification: [{  position: 40 }]
+  @UI.identification: [{  position: 40, label: 'Location' }]
   @UI.selectionField: [{position: 20 }]
   Location;
   @UI.lineItem: [{position: 50}]
-  @UI.identification: [{  position: 50 }]
+  @UI.identification: [{  position: 50, label: 'City' }]
   City;
-  @UI.lineItem: [{position: 60}]
-  @UI.identification: [{  position: 60 }]
+  @UI.lineItem: [{position: 60, label: 'Prinicipal' }]
+  @UI.identification: [{  position: 60, label: 'Prinicipal' }]
   Principal;
 
 

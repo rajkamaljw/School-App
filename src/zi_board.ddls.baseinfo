@@ -3,13 +3,10 @@
 {
 "FROM":
 [
-"ZSCHOOL"
+"ZDT_BOARD"
 ],
 "ASSOCIATED":
-[
-"ZI_BOARD_VH",
-"ZI_TEACHER"
-],
+[],
 "BASE":
 [],
 "ANNO_REF":

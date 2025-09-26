@@ -11,9 +11,11 @@ as projection on ZI_teacher
     Dob,
     Gender,
     Subject,
+    @EndUserText.label: 'Class Teacher'
     Isclassteacher,
     Phone,
     Qualification,
+    LastChangedAt,
     /* Associations */
-    _school: redirected to parent zc_school
+    _school: redirected to parent ZC_School
 }

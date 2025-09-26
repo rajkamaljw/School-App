@@ -1,0 +1,61 @@
+managed; // implementation in class zbp_i_school unique;
+strict ( 2 );
+
+define behavior for ZI_School //alias <alias_name>
+implementation in class zbp_i_school unique
+persistent table zschool
+lock master
+authorization master ( instance )
+etag master LastChangedAt
+early numbering
+{
+  field ( readonly ) Schoolid, LastChangedBy, LastChangedAt, CreatedAt, CreatedBy;
+  field ( mandatory: create ) Schoolname, Board, City, Principal;
+  create ( authorization : global );
+  update;
+  delete;
+  association _teacher { create; }
+
+  mapping for zschool
+    {
+
+      Schoolid = schoolid;
+      Schoolname = schoolname;
+      Board      = board;
+      Location   = location;
+      City       = city;
+      Principal  = principal;
+      CreatedBy     = created_by;
+      CreatedAt     = created_at;
+      LastChangedBy = last_changed_by;
+      LastChangedAt = last_changed_at;
+    }
+}
+
+define behavior for ZI_teacher //alias <alias_name>
+implementation in class zbp_i_teacher unique
+persistent table zteacher
+lock dependent by _school
+authorization dependent by _school
+etag master LastChangedAt
+early numbering
+{
+  update;
+  delete;
+   field ( readonly ) Schoolid, Teacherid, LastChangedAt;
+  association _school;
+
+  mapping for zteacher
+    {
+      Schoolid = schoolid;
+      Teacherid      = teacherid;
+      TeacherName    = teacher_name;
+      dob            = dob;
+      gender         = Gender;
+      subject        = Subject;
+      isclassteacher = Isclassteacher;
+      phone          = Phone;
+      qualification  = Qualification;
+      LastChangedAt = last_changed_at;
+    }
+}

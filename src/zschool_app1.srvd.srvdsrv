@@ -1,0 +1,6 @@
+@EndUserText.label: 'School App1'
+@AbapCatalog.extensibility.extensible: true
+define service Zschool_App1 {
+  expose ZC_School;
+  expose ZC_Teacher;
+}

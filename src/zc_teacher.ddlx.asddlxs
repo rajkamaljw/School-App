@@ -1,23 +1,52 @@
 @Metadata.layer: #CUSTOMER
-annotate view ZC_Teacher
-    with 
-{
-    @UI.lineItem:  [{ position: 10  }]
-    Teacherid;
-    @UI.lineItem:  [{ position: 20  }]
-    TeacherName;
-    @UI.lineItem:  [{ position: 30  }]
-    Dob;
-    @UI.lineItem:  [{ position: 40  }]
-    Gender;
-    @UI.lineItem:  [{ position: 50  }]
-    Subject;
-    @UI.lineItem:  [{ position: 60, label: 'Class Teacher'  }]
-    Isclassteacher;
-    @UI.lineItem:  [{ position: 70  }]
-    Phone;
-    @UI.lineItem:  [{ position: 80  }]
-    Qualification;
 
-    
+@UI.headerInfo: {
+    typeName: 'Teacher',
+    typeNamePlural: 'Teachers',
+    title: {
+        type: #STANDARD,
+        value: 'TeacherName'
+    }
+}
+
+annotate view ZC_Teacher with
+{
+  @UI.facet: [{
+    id: 'Teacher',
+    purpose: #STANDARD,
+    label: 'Teacher Detail',
+    position: 10,
+    type: #IDENTIFICATION_REFERENCE
+  }]
+
+  @UI.lineItem:  [{ position: 10  }]
+  @UI.identification: [{  position: 10, label: 'Teacher ID' }]
+  Teacherid;
+  @UI.lineItem:  [{ position: 20  }]
+  @UI.identification: [{  position: 20, label: ' Name' }]
+  TeacherName;
+  @UI.lineItem:  [{ position: 30  }]
+  @UI.identification: [{  position: 30, label: 'DATE OF BIRTH' }]
+  Dob;
+  @UI.lineItem:  [{ position: 40 }]
+  @UI.identification: [{  position: 40, label: 'Gender' }]
+  @Consumption.valueHelpDefinition: [{ entity: {
+      name: 'ZI_GENDER',
+      element: 'Gender'
+  } }]
+  Gender;
+  @UI.lineItem:  [{ position: 50  }]
+  @UI.identification: [{  position: 50, label: 'Subject' }]
+  Subject;
+  @UI.lineItem:  [{ position: 60  }]
+  @UI.identification: [{  position: 60 }]
+  Isclassteacher;
+  @UI.lineItem:  [{ position: 70  }]
+  @UI.identification: [{  position: 70, label: 'Phone' }]
+  Phone;
+  @UI.lineItem:  [{ position: 80  }]
+  @UI.identification: [{  position: 80, label: 'Qualification' }]
+  Qualification;
+
+
 }
